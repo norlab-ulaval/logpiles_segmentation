@@ -1,0 +1,97 @@
+_BASE_: "../detectron2/model_zoo/configs/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x.yaml"
+CUDNN_BENCHMARK: true
+DATALOADER:
+  FILTER_EMPTY_ANNOTATIONS: True
+  NUM_WORKERS: 6
+DATASETS:
+  TEST:
+  - logs_test
+  TRAIN:
+  - logs_train
+INPUT:
+  COLOR_AUG_SSD: false
+  CROP:
+    ENABLED: false
+  FORMAT: BGR
+  IMAGE_SIZE: 1024
+  MASK_FORMAT: bitmask
+  MAX_SCALE: 2.0
+  MAX_SIZE_TEST: 1333
+  MIN_SCALE: 0.3
+  MIN_SIZE_TEST: 800
+  RANDOM_FLIP: horizontal
+  SIZE_DIVISIBILITY: -1
+MODEL:
+  ANCHOR_GENERATOR:
+    SIZES: [[32], [64], [128], [256], [512]]  # One size for each in feature map
+    ASPECT_RATIOS: [[0.5, 1.0, 2.0]]  # Three aspect ratios (same for all in feature maps)
+  BACKBONE:
+    FREEZE_AT: 0
+  KEYPOINT_ON: False
+  MASK_ON: True
+  PROPOSAL_GENERATOR:
+    NAME: "RPN"
+  ROI_BOX_HEAD:
+    BBOX_REG_WEIGHTS:  (1, 1, 1, 1)
+    NUM_CONV: 4
+    POOLER_RESOLUTION: 7
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: "ROIAlign"
+  ROI_HEADS:
+    BATCH_SIZE_PER_IMAGE: 256
+    IN_FEATURES: ["p2","p3","p4","p5"]
+    NAME: "StandardROIHeads"
+    NMS_THRESH_TEST: 0.5
+    NUM_CLASSES: 1
+    SCORE_THRESH_TEST: 0.8
+  ROI_MASK_HEAD:
+    CLS_AGNOSTIC_MASK: false
+    CONV_DIM: 256
+    NAME: MaskRCNNConvUpsampleHead
+    NORM: ''
+    NUM_CONV: 4
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: "ROIAlign"
+  RPN:
+    HEAD_NAME: "StandardRPNHead"
+    BBOX_REG_WEIGHTS: (1,1,1,1)
+    IN_FEATURES: ["p2","p3","p4","p5","p6"]
+    NMS_THRESH: 0.9
+  SEM_SEG_HEAD:
+    LOSS_WEIGHT: 0.5
+    NUM_CLASSES: 1
+  WEIGHTS: https://dl.fbaipublicfiles.com/detectron2/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x/139653917/model_final_2d9806.pkl
+OUTPUT_DIR: ./output
+SOLVER:
+  AMP:
+    ENABLED: true
+  BASE_LR: 0.001
+  CHECKPOINT_PERIOD: 10000
+  GAMMA: 0.2
+  IMS_PER_BATCH: 8
+  LR_SCHEDULER_NAME: WarmupMultiStepLR
+  MAX_ITER: 8000
+  STEPS: [2000, 4000, 6000]
+  WARMUP_FACTOR: 0.0001
+  WARMUP_ITERS: 500
+  WARMUP_METHOD: linear
+TEST:
+  DETECTIONS_PER_IMAGE: 250
+  EVAL_PERIOD: 100
+  AUG:
+    ENABLED: false
+    FLIP: true
+    MAX_SIZE: 4000
+    MIN_SIZES:
+    - 400
+    - 500
+    - 600
+    - 700
+    - 800
+    - 900
+    - 1000
+    - 1100
+    - 1200
+VIS_PERIOD: 10000
+VERSION: 2
