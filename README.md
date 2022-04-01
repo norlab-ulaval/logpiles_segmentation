@@ -1,4 +1,4 @@
-# Logspiles Segmentation
+# Logpiles Segmentation
 
 Official code repository for paper [Instance Segmentation for Autonomous Log Grasping in Forestry Operations](https://arxiv.org/pdf/2203.01902.pdf).
 
