@@ -4,14 +4,15 @@ Official code repository for paper [Instance Segmentation for Autonomous Log Gra
 
 ## Dataset 
 
-The TimberSeg 1.0 dataset is publicly available here. (link to come)
+The TimberSeg 1.0 dataset is publicly available [here](https://data.mendeley.com/datasets/y5npsm3gkj/). It comes with an original and a prescaled version of the images. We recommend using the prescaled version for faster dataloading and to avoid CUDA out-of-memory errors.
 
 ## Installation
 
 ### Requirements
 - Linux or macOS with Python ≥ 3.6
+- If using GPU, make sure you have at least 20 GB of memory and [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) installed.
 - PyTorch ≥ 1.9 and [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
-  Install them together at [pytorch.org](https://pytorch.org) to make sure of this.
+  Install them together at [pytorch.org](https://pytorch.org) to make sure of this. Make sure to select the correct CUDA version if using GPU.
 - We recommend that you first create a virtual env : 
     ```bash
     python3 -m venv venv
@@ -37,9 +38,13 @@ sh make.sh
 ## Usage
 
 This repo contains multiple scripts to reproduce our experiments. Parameters can be changed at the beginning of each file. 
-Start by fetching the TimberSeg 1.0 dataset using the following script :
+Start by fetching the TimberSeg 1.0 dataset using the following commands :
 ```bash
-python3 fetch_dataset.py
+sudo apt-get install unzip
+
+wget -O temp.zip https://data.mendeley.com/api/datasets-v2/datasets/4r28rc5g52/zip/download?version=1
+unzip temp.zip -d ./data
+rm temp.zip
 ```
 
 ### Model training 
@@ -68,4 +73,16 @@ We provide a demo script for inference on a folder containing test images. You n
 
 ```bash
 python3 inference.py
+```
+
+
+## Citing this paper 
+
+```bash
+@article{fortin2022instance,
+  title={Instance Segmentation for Autonomous Log Grasping in Forestry Operations},
+  author={Fortin, Jean-Michel and Gamache, Olivier and Grondin, Vincent and Pomerleau, Fran{\c{c}}ois and Gigu{\`e}re, Philippe},
+  journal={arXiv preprint arXiv:2203.01902},
+  year={2022}
+}
 ```
