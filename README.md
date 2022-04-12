@@ -40,11 +40,8 @@ sh make.sh
 This repo contains multiple scripts to reproduce our experiments. Parameters can be changed at the beginning of each file. 
 Start by fetching the TimberSeg 1.0 dataset using the following commands :
 ```bash
-sudo apt-get install unzip
-
-wget -O temp.zip https://data.mendeley.com/api/datasets-v2/datasets/4r28rc5g52/zip/download?version=1
-unzip temp.zip -d ./data
-rm temp.zip
+sudo chmod u+x fetch_data.sh
+./fetch_data.sh
 ```
 
 ### Model training 
