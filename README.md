@@ -25,6 +25,12 @@ The TimberSeg 1.0 dataset is publicly available [here](https://data.mendeley.com
 
 Detectron2 and Mask2Former were copied in this repository since we modified some files for rotated Mask R-CNN.
 
+### Compile Detectron2 
+
+```bash
+python -m pip install -e detectron2
+```
+
 ### CUDA kernel for MSDeformAttn (for Mask2Former)
 After preparing the required environment, run the following command to compile CUDA kernel for MSDeformAttn:
 
@@ -40,8 +46,8 @@ sh make.sh
 This repo contains multiple scripts to reproduce our experiments. Parameters can be changed at the beginning of each file. 
 Start by fetching the TimberSeg 1.0 dataset using the following commands :
 ```bash
-sudo chmod u+x fetch_data.sh
-./fetch_data.sh
+sudo chmod u+x fetch_dataset.sh
+./fetch_dataset.sh
 ```
 
 ### Model training 
