@@ -1,6 +1,12 @@
-# Logpiles Segmentation
+# Instance Segmentation for Autonomous Log Grasping in Forestry Operations
 
-Official code repository for paper [Instance Segmentation for Autonomous Log Grasping in Forestry Operations](https://arxiv.org/pdf/2203.01902.pdf).
+Jean-Michel Fortin, Olivier Gamache, Vincent Grondin, François Pomerleau, Philippe Giguère
+
+[[`arXiv`](https://arxiv.org/abs/2203.01902)] [[`BibTeX`](#CitingThisPaper)]
+
+<div align="center">
+  <img src="https://github.com/norlab-ulaval/logpiles_segmentation/blob/main/images/graphical_abstract.png" width="100%" height="100%"/>
+</div><br/>
 
 ## Dataset 
 
@@ -50,6 +56,12 @@ sudo chmod u+x fetch_dataset.sh
 ./fetch_dataset.sh
 ```
 
+Also, fetch the weights file for Mask2Former with the following commands :
+```bash
+sudo chmod u+x fetch_weights.sh
+./fetch_weights.sh
+```
+
 ### Model training 
 
 Three instance segmentation networks are evaluated in the paper: Mask R-CNN, Rotated Mask R-CNN and Mask2Former. The following scripts lets you train and test each of them using our best configuration.
@@ -79,7 +91,7 @@ python3 inference.py
 ```
 
 
-## Citing this paper 
+## <a name="CitingThisPaper"></a>Citing This Paper
 
 ```bash
 @article{fortin2022instance,
