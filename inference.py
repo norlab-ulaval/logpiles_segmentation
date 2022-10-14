@@ -16,9 +16,9 @@ from utils.utils import filter_instances_with_score, get_metadata_from_annos_fil
 ### PROGRAM VARIABLES ###
 #########################
 
-OUTPUT_FOLDER = "archives/2022-02-26_20-58 (Mask2Former 210 images)"        # Training outputs to use for inference
-DIRECTORY = 'data'                                                          # Directory from which to read images to predict
-DETECTION_THRESHOLD = 0.8                                                   # Minimal network confidence to keep instance
+OUTPUT_FOLDER = "outputs/2022-10-14_13-38"              # Training outputs to use for inference
+DIRECTORY = 'data'                                      # Directory from which to read images to predict
+DETECTION_THRESHOLD = 0.8                               # Minimal network confidence to keep instance
 
 #########################
 

@@ -1,9 +1,7 @@
 import datetime
 import torch
 import os
-from shutil import copyfile
 
-from detectron2 import model_zoo
 from detectron2.config import get_cfg
 from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.checkpoint import DetectionCheckpointer

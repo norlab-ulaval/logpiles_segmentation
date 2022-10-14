@@ -45,6 +45,7 @@ After preparing the required environment, run the following command to compile C
 ```bash
 cd mask2former/modeling/pixel_decoder/ops
 sh make.sh
+cd ../../../..
 ```
 
 ## Usage
