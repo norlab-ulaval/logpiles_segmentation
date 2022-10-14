@@ -1,4 +1,4 @@
-_BASE_: "../detectron2/model_zoo/configs/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x.yaml"
+_BASE_: "../detectron2/detectron2/model_zoo/configs/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x.yaml"
 CUDNN_BENCHMARK: true
 DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: True

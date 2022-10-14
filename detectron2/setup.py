@@ -15,7 +15,7 @@ assert torch_ver >= [1, 8], "Requires PyTorch >= 1.8"
 
 
 def get_version():
-    init_py_path = path.join(path.abspath(path.dirname(__file__)), "__init__.py")
+    init_py_path = path.join(path.abspath(path.dirname(__file__)), "detectron2", "__init__.py")
     init_py = open(init_py_path, "r").readlines()
     version_line = [l.strip() for l in init_py if l.startswith("__version__")][0]
     version = version_line.split("=")[-1].strip().strip("'\"")
@@ -39,7 +39,7 @@ def get_version():
 
 def get_extensions():
     this_dir = path.dirname(path.abspath(__file__))
-    extensions_dir = path.join(this_dir, "layers", "csrc")
+    extensions_dir = path.join(this_dir, "detectron2", "layers", "csrc")
 
     main_source = path.join(extensions_dir, "vision.cpp")
     sources = glob.glob(path.join(extensions_dir, "**", "*.cpp"))
@@ -92,7 +92,7 @@ def get_extensions():
 
     ext_modules = [
         extension(
-            "_C",
+            "detectron2._C",
             sources,
             include_dirs=include_dirs,
             define_macros=define_macros,
@@ -112,7 +112,7 @@ def get_model_zoo_configs() -> List[str]:
     # Use absolute paths while symlinking.
     source_configs_dir = path.join(path.dirname(path.realpath(__file__)), "configs")
     destination = path.join(
-        path.dirname(path.realpath(__file__)), "model_zoo", "configs"
+        path.dirname(path.realpath(__file__)), "detectron2", "model_zoo", "configs"
     )
     # Symlink the config directory inside package to have a cleaner pip install.
 
@@ -139,9 +139,9 @@ def get_model_zoo_configs() -> List[str]:
 # For projects that are relative small and provide features that are very close
 # to detectron2's core functionalities, we install them under detectron2.projects
 PROJECTS = {
-    "projects.point_rend": "projects/PointRend/point_rend",
-    "projects.deeplab": "projects/DeepLab/deeplab",
-    "projects.panoptic_deeplab": "projects/Panoptic-DeepLab/panoptic_deeplab",
+    "detectron2.projects.point_rend": "projects/PointRend/point_rend",
+    "detectron2.projects.deeplab": "projects/DeepLab/deeplab",
+    "detectron2.projects.panoptic_deeplab": "projects/Panoptic-DeepLab/panoptic_deeplab",
 }
 
 setup(
@@ -153,8 +153,8 @@ setup(
     "platform for object detection and segmentation.",
     packages=find_packages(exclude=("configs", "tests*")) + list(PROJECTS.keys()),
     package_dir=PROJECTS,
-    package_data={"model_zoo": get_model_zoo_configs()},
-    python_requires=">=3.6",
+    package_data={"detectron2.model_zoo": get_model_zoo_configs()},
+    python_requires=">=3.7",
     install_requires=[
         # These dependencies are not pure-python.
         # In general, avoid adding more dependencies like them because they are not
@@ -183,14 +183,17 @@ setup(
         "dataclasses; python_version<'3.7'",
         "omegaconf>=2.1",
         "hydra-core>=1.1",
-        "black==21.4b2",
-        "scipy>1.5.1",
+        "black==22.3.0",
+        "timm",
+        "fairscale",
+        "packaging",
         # If a new dependency is required at import time (in addition to runtime), it
         # probably needs to exist in docs/requirements.txt, or as a mock in docs/conf.py
     ],
     extras_require={
         # optional dependencies, required by some features
         "all": [
+            "scipy>1.5.1",
             "shapely",
             "pygments>=2.2",
             "psutil",

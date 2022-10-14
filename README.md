@@ -11,17 +11,17 @@ The TimberSeg 1.0 dataset is publicly available [here](https://data.mendeley.com
 ### Requirements
 - Linux or macOS with Python ≥ 3.6
 - If using GPU, make sure you have at least 20 GB of memory and [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) installed.
-- PyTorch ≥ 1.9 and [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
-  Install them together at [pytorch.org](https://pytorch.org) to make sure of this. Make sure to select the correct CUDA version if using GPU.
 - We recommend that you first create a virtual env : 
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
+- PyTorch ≥ 1.9 and [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
+  Install them together at [pytorch.org](https://pytorch.org/get-started/locally/) to make sure of this. Make sure to select the correct CUDA version if using GPU.
 - Then install project requirements 
-    ```bash
-    pip install -r requirements.txt
-    ```
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 Detectron2 and Mask2Former were copied in this repository since we modified some files for rotated Mask R-CNN.
 
