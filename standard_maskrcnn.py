@@ -158,6 +158,7 @@ if __name__ == "__main__":
 
     if DO_TRAIN:
         train_maskrcnn(cfg, RESUME, SHOW_ANNOTATIONS, SHOW_AUGMENTATIONS)
+        TEST_WEIGHTS = os.path.join(cfg.OUTPUT_DIR, "model_final.pth")       # Ensures trained network will be used for testing 
 
     if DO_TEST:
         test_maskrcnn(cfg, TEST_WEIGHTS)
