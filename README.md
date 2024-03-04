@@ -2,7 +2,7 @@
 
 Jean-Michel Fortin, Olivier Gamache, Vincent Grondin, François Pomerleau, Philippe Giguère
 
-[[`arXiv`](https://arxiv.org/abs/2203.01902)] [[`BibTeX`](#CitingThisPaper)]
+[[`arXiv`](https://arxiv.org/abs/2203.01902)] [[`BibTeX`](#CitingThisPaper)] [[`Paper`](https://doi.org/10.1109/IROS47612.2022.9982286)]
 
 <div align="center">
   <img src="https://github.com/norlab-ulaval/logpiles_segmentation/blob/main/images/graphical_abstract.png" width="100%" height="100%"/>
@@ -95,10 +95,14 @@ python3 inference.py
 ## <a name="CitingThisPaper"></a>Citing This Paper
 
 ```bash
-@article{fortin2022instance,
-  title={Instance Segmentation for Autonomous Log Grasping in Forestry Operations},
-  author={Fortin, Jean-Michel and Gamache, Olivier and Grondin, Vincent and Pomerleau, Fran{\c{c}}ois and Gigu{\`e}re, Philippe},
-  journal={arXiv preprint arXiv:2203.01902},
-  year={2022}
+@inproceedings{Fortin2022,
+  title = {Instance Segmentation for Autonomous Log Grasping in Forestry Operations},
+  url = {http://dx.doi.org/10.1109/IROS47612.2022.9982286},
+  DOI = {10.1109/iros47612.2022.9982286},
+  booktitle = {2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  publisher = {IEEE},
+  author = {Fortin,  Jean-Michel and Gamache,  Olivier and Grondin,  Vincent and Pomerleau,  Fran\c{c}ois and Giguère,  Philippe},
+  year = {2022},
+  month = oct 
 }
 ```
