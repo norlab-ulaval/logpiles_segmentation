@@ -183,7 +183,7 @@ setup(
         "dataclasses; python_version<'3.7'",
         "omegaconf>=2.1",
         "hydra-core>=1.1",
-        "black==22.3.0",
+        "black>=26.3.1",
         "timm",
         "fairscale",
         "packaging",
